@@ -11,7 +11,7 @@ const App = () => {
   const handleSendOtp = async () => {
     const formattedPhone = phone.startsWith('+') ? phone : `+91${phone}`;
     try {
-      const response = await axios.post('http://localhost:8080/api/users/send-code', { phone: formattedPhone });
+      const response = await axios.post('https://otp-backend-pc9h.onrender.com/api/users/send-code', { phone: formattedPhone });
       setMessage(response.data.message);
       setStep(2);
     } catch (error) {
@@ -22,7 +22,7 @@ const App = () => {
   const handleVerifyOtp = async () => {
     const formattedPhone = phone.startsWith('+') ? phone : `+91${phone}`;
     try {
-      const response = await axios.post('http://localhost:8080/api/users/verify-code', { phone: formattedPhone, code: otp });
+      const response = await axios.post('https://otp-backend-pc9h.onrender.com/api/users/verify-code', { phone: formattedPhone, code: otp });
       setMessage(response.data.message);
 
       if (response.data.message === 'Verification successful') {
